@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Employee List</h2>
+<table class="table table-striped">
+<thead>
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Skillset</th>
+<th>Department</th>
+<th>Email</th>
+<th>Phone Number</th>
+<th>Address</th>
+<th>Date of Joining</th>
+<th>Actions</th>
+</tr>
+</thead>
+<tbody>
+       {% for employee in employees %}
+<tr>
+<td>{{ employee.emp_id }}</td>
+<td>{{ employee.name }}</td>
+<td>{{ employee.skillset }}</td>
+<td>{{ employee.department }}</td>
+<td>{{ employee.email }}</td>
+<td>{{ employee.phone_number }}</td>
+<td>{{ employee.address }}</td>
+<td>{{ employee.date_of_joining }}</td>
+<td>
+<a href="{{ url_for('edit_employee', emp_id=employee.emp_id) }}" class="btn btn-primary">Edit</a>
+<form action="{{ url_for('delete_employee', emp_id=employee.emp_id) }}" method="post" style="display:inline-block;">
+<button type="submit" class="btn btn-danger">Delete</button>
+</form>
+</td>
+</tr>
+       {% endfor %}
+</tbody>
+</table>
+{% endblock %}

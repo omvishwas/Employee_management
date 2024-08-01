@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Employee Summary</h2>
+<p>Total Employees: {{ total_employees }}</p>
+<ul>
+   {% for skillset, count in skillset_summary %}
+<li>{{ skillset }}: {{ count }}</li>
+   {% endfor %}
+</ul>
+{% endblock %}
